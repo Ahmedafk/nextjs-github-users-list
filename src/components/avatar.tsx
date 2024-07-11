@@ -5,7 +5,7 @@ type Props = {
     size?: number
 }
 
-export default async function Avatar({ size = 50, src }: Props) {
+export default function Avatar({ size = 50, src }: Props) {
     return <Image
         width={size}
         height={size}
