@@ -1,13 +1,9 @@
-// "use client"
-
-import UserCard from "@/components/card/card";
-// import { dummyUsers } from "./data";
-// import { useState } from "react";
 import { User } from "@/common/models";
-import styles from "./page.module.css"
+import { USERS_ENDPOINT } from "@/common/constants";
+import UsersList from "./usersList";
 
 const getUsers = async (): Promise<User[]> => {
-  const response = await fetch(`https://api.github.com/users?per_page=100`, {
+  const response = await fetch(`${USERS_ENDPOINT}?per_page=100`, {
     cache: 'force-cache',
     headers: {
       'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`,
@@ -24,19 +20,7 @@ const getUsers = async (): Promise<User[]> => {
 }
 
 export default async function Home() {
-  // const [users, setUsers] = useState(dummyUsers)
 
   const users = await getUsers()
-  return (
-    <>
-      <div>
-        <div className={styles.container}>
-          {users.map(user => {
-            return <UserCard key={user.id} user={user} />
-          })}
-        </div>
-        {/* <button style={{ padding: 20 }} onClick={() => setUsers([...users, ...dummyUsers])}>load more</button> */}
-      </div>
-    </>
-  );
+  return <UsersList initialData={users} />
 }
