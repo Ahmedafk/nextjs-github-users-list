@@ -15,7 +15,11 @@ const getUserDetails = async (username: User["login"]): Promise<DetailedUser> =>
           'Accept': 'application/vnd.github.v3+json'
         }
       })
-    if (!response.ok) throw new Error(`Failed to fetch details for user: ${username}`)
+    if (!response.ok) {
+        const errorMessage = await response.text()
+        console.error(`Failed to fetch details for user: ${username}`, errorMessage)
+        throw new Error(`Failed to fetch details for user: ${username}, please try again later!`)
+    }
 
     return response.json()
 }

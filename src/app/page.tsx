@@ -14,7 +14,11 @@ const getUsers = async (): Promise<User[]> => {
       'Accept': 'application/vnd.github.v3+json'
     }
   })
-  if (!response.ok) throw new Error("Failed to fetch users")
+  if (!response.ok) {
+    const errorMessage = await response.text()
+    console.error(`Failed to fetch users`, errorMessage)
+    throw new Error("Failed to fetch users, please try again later!")
+  }
 
   return response.json()
 }
