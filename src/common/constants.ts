@@ -1,0 +1,1 @@
+export const USERS_ENDPOINT = "https://api.github.com/users"

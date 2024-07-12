@@ -3,6 +3,7 @@ import { Metadata } from "next"
 import { DetailedUser, User } from "@/common/models";
 import Avatar from "@/components/avatar/avatar";
 import styles from "./page.module.css"
+import { USERS_ENDPOINT } from "@/common/constants";
 
 export const generateMetadata = ({ params }: Props): Metadata => {
     return {
@@ -11,7 +12,7 @@ export const generateMetadata = ({ params }: Props): Metadata => {
 }
 
 const getUserDetails = async (username: User["login"]): Promise<DetailedUser> => {
-    const response = await fetch(`https://api.github.com/users/${username}`, {
+    const response = await fetch(`${USERS_ENDPOINT}/${username}`, {
         cache: 'force-cache',
         headers: {
           'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`,

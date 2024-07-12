@@ -2,13 +2,14 @@ import { DetailedUser, User } from "@/common/models";
 import Avatar from "../avatar/avatar";
 import Link from "next/link";
 import styles from "./card.module.css"
+import { USERS_ENDPOINT } from "@/common/constants";
 
 type Props = {
     user: User
 }
 
 const getUserDetails = async (username: User["login"]): Promise<DetailedUser> => {
-    const response = await fetch(`https://api.github.com/users/${username}`, {
+    const response = await fetch(`${USERS_ENDPOINT}/${username}`, {
         cache: 'force-cache',
         headers: {
           'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`,
