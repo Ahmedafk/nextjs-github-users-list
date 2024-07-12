@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: black;
+    border-style: solid;
+    margin: 10px;
+    height: 100px;
+    width: 200px;
+    align-items: center;
+    background-color: white;
+}
+
+.bodyWrapper {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    align-items: center;
+}
+
+.nameWrapper {
+    display: flex;
+    flex-direction: column;
+    padding-left: 5px;
+}

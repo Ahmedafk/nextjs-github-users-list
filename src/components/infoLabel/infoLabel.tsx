@@ -1,10 +1,12 @@
+import styles from "./infoLabel.module.css"
+
 type Props = {
     tag: string
     value: string | number
 }
 
 export default function InfoLabel({ tag, value }: Props) {
-    return <div style={{display: "flex", justifyContent: "center", gap: 3}}>
+    return <div className={styles.container}>
         <p>{tag}</p>
         <p> : </p>
         <p>{value || "-"}</p>

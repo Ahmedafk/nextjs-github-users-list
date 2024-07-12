@@ -1,6 +1,7 @@
 import { DetailedUser, User } from "@/common/models";
-import Avatar from "./avatar";
+import Avatar from "../avatar/avatar";
 import Link from "next/link";
+import styles from "./card.module.css"
 
 type Props = {
     user: User
@@ -20,7 +21,7 @@ const getUserDetails = async (username: User["login"]): Promise<DetailedUser> =>
 }
 
 export default async function UserCard({ user }: Props) {
-    return <div style={{ display: "flex", flexDirection: "row", borderWidth: 1, borderRadius: 5, borderColor: "black", borderStyle: "solid", margin: 10, height: 100, width: 200, alignItems: "center" }}>
+    return <div className={styles.container}>
         <UserCardBody username={user.login} />
     </div>
 }
@@ -28,10 +29,10 @@ export default async function UserCard({ user }: Props) {
 async function UserCardBody({ username }: { username: User["login"] }) {
     try {
         const details = await getUserDetails(username)
-        return <Link href={`/${details.login}`} style={{ padding: 10 }}>
-            <div style={{ display: "flex", flexDirection: "row", padding: 10, alignItems: "center" }}>
+        return <Link href={`/${details.login}`}>
+            <div className={styles.bodyWrapper}>
                 <Avatar src={details.avatar_url} />
-                <div style={{ display: "flex", flexDirection: "column", paddingLeft: 5 }}>
+                <div className={styles.nameWrapper}>
                     <p>{details.login}</p>
                     <p>{details.name}</p>
                 </div>

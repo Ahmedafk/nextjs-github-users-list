@@ -1,7 +1,8 @@
-import Avatar from "@/components/avatar"
-import InfoLabel from "@/components/infoLabel"
+import InfoLabel from "@/components/infoLabel/infoLabel"
 import { Metadata } from "next"
 import { DetailedUser, User } from "@/common/models";
+import Avatar from "@/components/avatar/avatar";
+import styles from "./page.module.css"
 
 export const generateMetadata = ({ params }: Props): Metadata => {
     return {
@@ -30,10 +31,9 @@ type Props = {
 
 export default async function Page({ params }: Props) {
     const details = await getUserDetails(params.username)
-    return <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", margin: 20 }}>
-        <div style={{ borderWidth: 1, borderRadius: 5, borderColor: "black", borderStyle: "solid", padding: 20 }}>
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-
+    return <div className={styles.container}>
+        <div className={styles.wrapper}>
+            <div className={styles.mainInfoWrapper}>
                 <Avatar size={100} src={details.avatar_url} />
                 <h2 style={{ paddingTop: "5px" }}>{details.login}</h2>
                 <p>{details.name}</p>
