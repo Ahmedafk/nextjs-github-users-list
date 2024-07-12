@@ -13,8 +13,12 @@ export default function RootLayout({
   return (
     <html lang="en" style={{ height: "100%" }}>
       <body style={{ backgroundColor: "ghostwhite", margin: 0, display: "flex", flexDirection: "column" }}>
-        <header>
-          <h1>Github users list</h1>
+        <header
+          style={{
+            backgroundColor: "lightblue",
+            padding: "1rem"
+          }}>
+          <h1>Github users</h1>
         </header>
         <div>
           {children}
