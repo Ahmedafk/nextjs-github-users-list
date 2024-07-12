@@ -8,7 +8,7 @@ type Props = {
 
 const getUserDetails = async (user: User): Promise<DetailedUser> => {
     const response = await fetch(`https://api.github.com/users/${user.login}`, { cache: 'force-cache' })
-    if (!response.ok) throw new Error(`failed to fetch details for user: ${user.login}`)
+    if (!response.ok) throw new Error(`Failed to fetch details for user: ${user.login}`)
 
     return response.json()
 }

@@ -7,7 +7,7 @@ import { User } from "@/common/models";
 
 const getUsers = async (): Promise<User[]> => {
   const response = await fetch(`https://api.github.com/users`, { cache: 'force-cache' })
-  if (!response.ok) throw new Error("failed to fetch users")
+  if (!response.ok) throw new Error("Failed to fetch users")
 
   return response.json()
 }

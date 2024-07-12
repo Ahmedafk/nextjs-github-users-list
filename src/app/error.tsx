@@ -5,5 +5,5 @@ type Props = {
 }
 
 export default function ErrorPage(props: Props) {
-    return <div><h3 style={{ color: "red"}}>{props?.error?.message}</h3></div>
+    return <div style={{ padding: 5 }}><h3 style={{ color: "red"}}>{props?.error?.message}</h3></div>
 }
