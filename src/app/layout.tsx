@@ -14,7 +14,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <header>
-          <h1>Github users</h1>
+          <h1>GitHub users</h1>
         </header>
         <div>
           {children}

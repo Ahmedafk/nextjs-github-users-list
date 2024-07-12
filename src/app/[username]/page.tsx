@@ -35,8 +35,8 @@ export default async function Page({ params }: Props) {
         <div className={styles.wrapper}>
             <div className={styles.mainInfoWrapper}>
                 <Avatar size={100} src={details.avatar_url} />
-                <h2 style={{ paddingTop: "5px" }}>{details.login}</h2>
-                <p>{details.name}</p>
+                <h2 className={styles.username}>{details.login}</h2>
+                <p className={styles.fullname}>{details.name}</p>
             </div>
 
             <div style={{ margin: 10 }}>

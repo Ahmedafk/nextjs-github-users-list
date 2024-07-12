@@ -33,8 +33,8 @@ async function UserCardBody({ username }: { username: User["login"] }) {
             <div className={styles.bodyWrapper}>
                 <Avatar src={details.avatar_url} />
                 <div className={styles.nameWrapper}>
-                    <p>{details.login}</p>
-                    <p>{details.name}</p>
+                    <p className={styles.username}>{details.login}</p>
+                    <p className={styles.fullname}>{details.name}</p>
                 </div>
             </div>
         </Link>
