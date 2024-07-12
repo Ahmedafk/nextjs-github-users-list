@@ -10,7 +10,13 @@ export const generateMetadata = ({ params }: Props): Metadata => {
 }
 
 const getUserDetails = async (username: User["login"]): Promise<DetailedUser> => {
-    const response = await fetch(`https://api.github.com/users/${username}`, { cache: 'force-cache' })
+    const response = await fetch(`https://api.github.com/users/${username}`, {
+        cache: 'force-cache',
+        headers: {
+          'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`,
+          'Accept': 'application/vnd.github.v3+json'
+        }
+      })
     if (!response.ok) throw new Error(`Failed to fetch details for user: ${username}`)
 
     return response.json()

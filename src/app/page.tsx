@@ -6,7 +6,13 @@ import UserCard from "@/components/card";
 import { User } from "@/common/models";
 
 const getUsers = async (): Promise<User[]> => {
-  const response = await fetch(`https://api.github.com/users`, { cache: 'force-cache' })
+  const response = await fetch(`https://api.github.com/users?per_page=100`, {
+    cache: 'force-cache',
+    headers: {
+      'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`,
+      'Accept': 'application/vnd.github.v3+json'
+    }
+  })
   if (!response.ok) throw new Error("Failed to fetch users")
 
   return response.json()
