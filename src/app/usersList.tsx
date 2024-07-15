@@ -3,7 +3,7 @@
 import UserCard from "@/components/card/card";
 import React, { useState } from "react";
 import { User } from "@/common/models";
-import styles from "./page.module.css"
+import styles from "./usersList.module.css"
 import { getUsersPaginated } from "@/common/requests";
 
 type Props = {
