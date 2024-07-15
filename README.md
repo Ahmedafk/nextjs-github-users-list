@@ -15,6 +15,3 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-#### Note
-Haven't managed to get **Load More** button on the homepage working. `onClick` functionality does not seem to be triggering at all.

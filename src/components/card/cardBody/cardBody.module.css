@@ -19,3 +19,11 @@
 .fullname {
     color: darkgray;
 }
+
+.error {
+    color: red;
+}
+
+.error, .centerText {
+    padding-left: 10px;
+}

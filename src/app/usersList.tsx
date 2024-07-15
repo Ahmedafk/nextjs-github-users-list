@@ -1,7 +1,7 @@
 "use client"
 
 import UserCard from "@/components/card/card";
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import { User } from "@/common/models";
 import styles from "./page.module.css"
 import { getUsersPaginated } from "@/common/requests";
@@ -23,26 +23,20 @@ export default function UsersList({ initialData }: Props) {
     try {
       const newUsers = await getUsersPaginated(lastFetchedUserId)
       const allUsers = [...users, ...newUsers]
-      console.log("Num of users", allUsers.length)
       setUsers(allUsers)
       setLoadMoreFailed(false)
     } catch (error) {
+      console.warn("Load more users failed: ", error)
       setLoadMoreFailed(true)
     } finally {
       setLoading(false)
     }
   };
 
-  const memoizedUsers = useMemo(() => {
-    return users.map(user => {
-      return <UserCard key={user.id} user={user} />
-    })
-  }, [users]);
-
   return (
     <>
       <div className={styles.container}>
-        {memoizedUsers}
+        {users.map(user => <UserCard key={user.id} user={user} />)}
       </div>
       <div className={styles.btnContainer}>
         <button style={{ padding: 20, color: loadMoreFailed ? "red" : "black" }} onClick={loadMore}>
