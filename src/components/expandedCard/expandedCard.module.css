@@ -1,0 +1,23 @@
+.wrapper {
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: black;
+    border-style: solid;
+    padding: 20px;
+}
+
+.mainInfoWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.username {
+    padding-top: 5px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.fullname {
+    color: darkgray;
+}
