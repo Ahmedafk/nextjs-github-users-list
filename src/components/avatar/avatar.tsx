@@ -8,9 +8,9 @@ type Props = {
 
 export default function Avatar({ size = 50, src, username }: Props) {
     return <Image
+        src={src}
         width={size}
         height={size}
         style={{ borderRadius: size / 2 }}
-        src={src}
         alt={`${username} profile picture`} />
 }
