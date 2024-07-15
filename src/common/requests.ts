@@ -5,7 +5,7 @@ export const getUsersPaginated = async (lastId: number = 0, per_page: number = 1
     const response = await fetch(`${USERS_ENDPOINT}?per_page=${per_page}&since=${lastId}`, {
         cache: 'force-cache',
         headers: {
-            'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`,
+            'Authorization': `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`,
             'Accept': 'application/vnd.github.v3+json'
         }
     })
@@ -22,7 +22,7 @@ export const getUserDetails = async (username: User["login"]): Promise<DetailedU
     const response = await fetch(`${USERS_ENDPOINT}/${username}`, {
         cache: 'force-cache',
         headers: {
-            'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`,
+            'Authorization': `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`,
             'Accept': 'application/vnd.github.v3+json'
         }
     })
