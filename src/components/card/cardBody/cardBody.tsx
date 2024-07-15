@@ -14,7 +14,7 @@ export default async function UserCardBody({ username }: Props) {
         return <div>
             <Link href={`/${details.login}`}>
                 <div className={styles.bodyWrapper}>
-                    <Avatar src={details.avatar_url} />
+                    <Avatar src={details.avatar_url} username={details.login} />
                     <div className={styles.nameWrapper}>
                         <p className={styles.username}>{details.login}</p>
                         <p className={styles.fullname}>{details.name}</p>

@@ -23,7 +23,7 @@ export default async function Page({ params }: Props) {
         <div className={styles.wrapper}>
             <Link href={details.html_url}>
                 <div className={styles.mainInfoWrapper}>
-                    <Avatar size={100} src={details.avatar_url} />
+                    <Avatar size={100} src={details.avatar_url} username={details.login} />
                     <h2 className={styles.username}>{details.login}</h2>
                     <p className={styles.fullname}>{details.name}</p>
                 </div>
