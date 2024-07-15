@@ -4,7 +4,7 @@ import UserCard from "@/components/card/card";
 import React, { useState, useMemo } from "react";
 import { User } from "@/common/models";
 import styles from "./page.module.css"
-import { USERS_ENDPOINT } from "@/common/constants";
+import { getUsersPaginated } from "@/common/requests";
 
 type Props = {
   initialData: User[]
@@ -19,26 +19,18 @@ export default function UsersList({ initialData }: Props) {
     setLoading(true);
 
     const lastFetchedUserId = users.at(-1)?.id || 0
-    const res = await fetch(`${USERS_ENDPOINT}?per_page=100&since=${lastFetchedUserId}`, {
-      cache: 'force-cache',
-      headers: {
-        'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`,
-        'Accept': 'application/vnd.github.v3+json'
-      }
-    })
 
-    setLoading(false)
-
-    if (!res.ok) {
+    try {
+      const newUsers = await getUsersPaginated(lastFetchedUserId)
+      const allUsers = [...users, ...newUsers]
+      console.log("Num of users", allUsers.length)
+      setUsers(allUsers)
+      setLoadMoreFailed(false)
+    } catch (error) {
       setLoadMoreFailed(true)
-      return
+    } finally {
+      setLoading(false)
     }
-
-    const newUsers = await res.json()
-    const allUsers = [...users, ...newUsers]
-    console.log("Num of users", allUsers.length)
-    setUsers(allUsers)
-    setLoadMoreFailed(false)
   };
 
   const memoizedUsers = useMemo(() => {

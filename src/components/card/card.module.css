@@ -10,25 +10,3 @@
     align-items: center;
     background-color: white;
 }
-
-.bodyWrapper {
-    display: flex;
-    flex-direction: row;
-    padding: 20px;
-    align-items: center;
-}
-
-.nameWrapper {
-    display: flex;
-    flex-direction: column;
-    padding-left: 5px;
-}
-
-.username {
-    font-size: 20px;
-    font-weight: 600;
-}
-
-.fullname {
-    color: darkgray;
-}
